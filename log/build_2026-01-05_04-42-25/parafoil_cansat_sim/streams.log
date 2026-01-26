@@ -1,0 +1,50 @@
+[0.016s] Invoking command in '/home/user/cansat/build/parafoil_cansat_sim': CMAKE_PREFIX_PATH=/home/user/sim_ws/install/gazebo_pkg:/home/user/sim_ws/install/f1tenth_gym_ros:/opt/ros/humble /usr/bin/cmake /home/user/cansat -DCMAKE_INSTALL_PREFIX=/home/user/cansat/install/parafoil_cansat_sim
+[0.351s] -- The C compiler identification is GNU 11.4.0
+[1.195s] -- The CXX compiler identification is GNU 11.4.0
+[1.780s] -- Detecting C compiler ABI info
+[1.979s] -- Detecting C compiler ABI info - done
+[1.984s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.988s] -- Detecting C compile features
+[1.989s] -- Detecting C compile features - done
+[1.993s] -- Detecting CXX compiler ABI info
+[2.221s] -- Detecting CXX compiler ABI info - done
+[2.226s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[2.226s] -- Detecting CXX compile features
+[2.227s] -- Detecting CXX compile features - done
+[2.233s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[2.362s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[2.469s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[2.553s] -- Added test 'copyright' to check source files copyright and LICENSE
+[2.556s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[2.556s] -- Configured cppcheck include dirs: 
+[2.557s] -- Configured cppcheck exclude dirs and/or files: 
+[2.560s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[2.560s] -- Configured cpplint exclude dirs and/or files: 
+[2.561s] -- Added test 'flake8' to check Python code syntax and style conventions
+[2.562s] -- Added test 'lint_cmake' to check CMake code style
+[2.564s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[2.567s] -- Added test 'uncrustify' to check C / C++ code style
+[2.567s] -- Configured uncrustify additional arguments: 
+[2.568s] -- Added test 'xmllint' to check XML markup files
+[2.570s] -- Configuring done
+[2.572s] -- Generating done
+[2.574s] -- Build files have been written to: /home/user/cansat/build/parafoil_cansat_sim
+[2.578s] Invoked command in '/home/user/cansat/build/parafoil_cansat_sim' returned '0': CMAKE_PREFIX_PATH=/home/user/sim_ws/install/gazebo_pkg:/home/user/sim_ws/install/f1tenth_gym_ros:/opt/ros/humble /usr/bin/cmake /home/user/cansat -DCMAKE_INSTALL_PREFIX=/home/user/cansat/install/parafoil_cansat_sim
+[2.580s] Invoking command in '/home/user/cansat/build/parafoil_cansat_sim': CMAKE_PREFIX_PATH=/home/user/sim_ws/install/gazebo_pkg:/home/user/sim_ws/install/f1tenth_gym_ros:/opt/ros/humble /usr/bin/cmake --build /home/user/cansat/build/parafoil_cansat_sim -- -j12 -l12
+[2.606s] Invoked command in '/home/user/cansat/build/parafoil_cansat_sim' returned '0': CMAKE_PREFIX_PATH=/home/user/sim_ws/install/gazebo_pkg:/home/user/sim_ws/install/f1tenth_gym_ros:/opt/ros/humble /usr/bin/cmake --build /home/user/cansat/build/parafoil_cansat_sim -- -j12 -l12
+[2.613s] Invoking command in '/home/user/cansat/build/parafoil_cansat_sim': CMAKE_PREFIX_PATH=/home/user/sim_ws/install/gazebo_pkg:/home/user/sim_ws/install/f1tenth_gym_ros:/opt/ros/humble /usr/bin/cmake --install /home/user/cansat/build/parafoil_cansat_sim
+[2.617s] -- Install configuration: ""
+[2.617s] -- Installing: /home/user/cansat/install/parafoil_cansat_sim/share/parafoil_cansat_sim/launch
+[2.618s] -- Installing: /home/user/cansat/install/parafoil_cansat_sim/share/parafoil_cansat_sim/launch/simulator.launch.py
+[2.618s] -- Installing: /home/user/cansat/install/parafoil_cansat_sim/share/parafoil_cansat_sim/launch/__pycache__
+[2.618s] -- Installing: /home/user/cansat/install/parafoil_cansat_sim/share/parafoil_cansat_sim/launch/__pycache__/simulator.launch.cpython-310.pyc
+[2.618s] -- Installing: /home/user/cansat/install/parafoil_cansat_sim/share/parafoil_cansat_sim/models
+[2.618s] -- Installing: /home/user/cansat/install/parafoil_cansat_sim/share/parafoil_cansat_sim/models/cansat
+[2.618s] -- Installing: /home/user/cansat/install/parafoil_cansat_sim/share/parafoil_cansat_sim/models/cansat/model.config
+[2.619s] -- Installing: /home/user/cansat/install/parafoil_cansat_sim/share/parafoil_cansat_sim/models/cansat/model.sdf
+[2.619s] [31mCMake Error at cmake_install.cmake:46 (file):
+[2.619s]   file INSTALL cannot find "/home/user/cansat/worlds": No such file or
+[2.619s]   directory.
+[2.619s] 
+[2.619s] [0m
+[2.620s] Invoked command in '/home/user/cansat/build/parafoil_cansat_sim' returned '1': CMAKE_PREFIX_PATH=/home/user/sim_ws/install/gazebo_pkg:/home/user/sim_ws/install/f1tenth_gym_ros:/opt/ros/humble /usr/bin/cmake --install /home/user/cansat/build/parafoil_cansat_sim

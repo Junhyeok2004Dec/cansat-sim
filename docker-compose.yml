@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  # [메인] 시뮬레이션 + ROS2 제어 + 내 코드 통합 컨테이너
+  sim:
+    build: .
+    container_name: cansat_main
+    image: cansat
+  
+    # Windows/NVIDIA GPU 사용 설정 (WSL2 Docker backend 필요)
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    environment:
+      - DISPLAY=novnc:0.0  # 화면을 novnc 컨테이너로 전송
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - QT_X11_NO_MITSHM=1
+    volumes:
+      # 로컬의 src 폴더를 컨테이너 내부로 마운트
+      - .:/sim_ws/src/cansat
+    command: >
+      bash -c "source /opt/ros/humble/setup.bash &&
+      colcon build --symlink-install &&
+      source install/setup.bash &&
+      ros2 launch cansat_sim simulator.launch.py"
+    networks:
+      - x11
+    depends_on:
+      - novnc
+
+  # [화면] 웹 브라우저로 GUI를 보여주는 컨테이너
+  novnc:
+    image: theasp/novnc:latest
+    container_name: novnc_display
+    environment:
+      - DISPLAY_WIDTH=1920
+      - DISPLAY_HEIGHT=1080
+      - RUN_XTERM=true
+    ports:
+      - "8080:8080"
+    networks:
+      - x11
+
+networks:
+  x11:

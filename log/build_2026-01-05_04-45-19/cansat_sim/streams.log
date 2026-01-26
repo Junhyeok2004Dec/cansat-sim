@@ -1,0 +1,50 @@
+[0.011s] Invoking command in '/home/user/cansat/build/cansat_sim': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/user/sim_ws/install/gazebo_pkg:/home/user/sim_ws/install/f1tenth_gym_ros:/opt/ros/humble /usr/bin/cmake --build /home/user/cansat/build/cansat_sim -- -j12 -l12
+[0.024s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.117s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.172s] -- Added test 'copyright' to check source files copyright and LICENSE
+[0.179s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.180s] -- Configured cppcheck include dirs: 
+[0.180s] -- Configured cppcheck exclude dirs and/or files: 
+[0.188s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[0.188s] -- Configured cpplint exclude dirs and/or files: 
+[0.189s] -- Added test 'flake8' to check Python code syntax and style conventions
+[0.191s] -- Added test 'lint_cmake' to check CMake code style
+[0.192s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[0.200s] -- Added test 'uncrustify' to check C / C++ code style
+[0.200s] -- Configured uncrustify additional arguments: 
+[0.201s] -- Added test 'xmllint' to check XML markup files
+[0.202s] -- Configuring done
+[0.204s] -- Generating done
+[0.205s] -- Build files have been written to: /home/user/cansat/build/cansat_sim
+[0.218s] Invoked command in '/home/user/cansat/build/cansat_sim' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/user/sim_ws/install/gazebo_pkg:/home/user/sim_ws/install/f1tenth_gym_ros:/opt/ros/humble /usr/bin/cmake --build /home/user/cansat/build/cansat_sim -- -j12 -l12
+[0.226s] Invoking command in '/home/user/cansat/build/cansat_sim': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/user/sim_ws/install/gazebo_pkg:/home/user/sim_ws/install/f1tenth_gym_ros:/opt/ros/humble /usr/bin/cmake --install /home/user/cansat/build/cansat_sim
+[0.229s] -- Install configuration: ""
+[0.230s] -- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/launch
+[0.230s] -- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/launch/simulator.launch.py
+[0.230s] -- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/launch/__pycache__
+[0.230s] -- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/launch/__pycache__/simulator.launch.cpython-310.pyc
+[0.230s] -- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/models
+[0.230s] -- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/models/cansat
+[0.230s] -- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/models/cansat/model.config
+[0.231s] -- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/models/cansat/model.sdf
+[0.231s] -- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/worlds
+[0.231s] -- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/worlds/cansat_world.sdf
+[0.231s] -- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/scripts
+[0.231s] -- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/scripts/controller_node.py
+[0.231s] -- Up-to-date: /home/user/cansat/install/cansat_sim/lib/cansat_sim/controller_node.py
+[0.231s] -- Up-to-date: /home/user/cansat/install/cansat_sim/share/ament_index/resource_index/package_run_dependencies/cansat_sim
+[0.231s] -- Installing: /home/user/cansat/install/cansat_sim/share/ament_index/resource_index/parent_prefix_path/cansat_sim
+[0.231s] -- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/environment/ament_prefix_path.sh
+[0.231s] -- Installing: /home/user/cansat/install/cansat_sim/share/cansat_sim/environment/ament_prefix_path.dsv
+[0.231s] -- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/environment/path.sh
+[0.231s] -- Installing: /home/user/cansat/install/cansat_sim/share/cansat_sim/environment/path.dsv
+[0.231s] -- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/local_setup.bash
+[0.231s] -- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/local_setup.sh
+[0.231s] -- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/local_setup.zsh
+[0.231s] -- Installing: /home/user/cansat/install/cansat_sim/share/cansat_sim/local_setup.dsv
+[0.231s] -- Installing: /home/user/cansat/install/cansat_sim/share/cansat_sim/package.dsv
+[0.231s] -- Up-to-date: /home/user/cansat/install/cansat_sim/share/ament_index/resource_index/packages/cansat_sim
+[0.232s] -- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/cmake/cansat_simConfig.cmake
+[0.232s] -- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/cmake/cansat_simConfig-version.cmake
+[0.232s] -- Installing: /home/user/cansat/install/cansat_sim/share/cansat_sim/package.xml
+[0.233s] Invoked command in '/home/user/cansat/build/cansat_sim' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/user/sim_ws/install/gazebo_pkg:/home/user/sim_ws/install/f1tenth_gym_ros:/opt/ros/humble /usr/bin/cmake --install /home/user/cansat/build/cansat_sim
