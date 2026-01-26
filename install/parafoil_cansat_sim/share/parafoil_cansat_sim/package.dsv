@@ -1,0 +1,5 @@
+source;share/parafoil_cansat_sim/local_setup.bash
+source;share/parafoil_cansat_sim/local_setup.dsv
+source;share/parafoil_cansat_sim/local_setup.ps1
+source;share/parafoil_cansat_sim/local_setup.sh
+source;share/parafoil_cansat_sim/local_setup.zsh

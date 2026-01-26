@@ -1,0 +1,50 @@
+[0.010s] Invoking command in '/home/user/cansat/build/cansat_sim': CMAKE_PREFIX_PATH=/home/user/sim_ws/install/gazebo_pkg:/home/user/sim_ws/install/f1tenth_gym_ros:/opt/ros/humble /usr/bin/cmake /home/user/cansat -DCMAKE_INSTALL_PREFIX=/home/user/cansat/install/cansat_sim
+[0.179s] -- The C compiler identification is GNU 11.4.0
+[0.913s] -- The CXX compiler identification is GNU 11.4.0
+[1.457s] -- Detecting C compiler ABI info
+[1.645s] -- Detecting C compiler ABI info - done
+[1.650s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.651s] -- Detecting C compile features
+[1.651s] -- Detecting C compile features - done
+[1.653s] -- Detecting CXX compiler ABI info
+[1.843s] -- Detecting CXX compiler ABI info - done
+[1.849s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.850s] -- Detecting CXX compile features
+[1.850s] -- Detecting CXX compile features - done
+[1.851s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.974s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[2.043s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[2.110s] -- Added test 'copyright' to check source files copyright and LICENSE
+[2.115s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[2.115s] -- Configured cppcheck include dirs: 
+[2.115s] -- Configured cppcheck exclude dirs and/or files: 
+[2.121s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[2.121s] -- Configured cpplint exclude dirs and/or files: 
+[2.122s] -- Added test 'flake8' to check Python code syntax and style conventions
+[2.123s] -- Added test 'lint_cmake' to check CMake code style
+[2.124s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[2.129s] -- Added test 'uncrustify' to check C / C++ code style
+[2.129s] -- Configured uncrustify additional arguments: 
+[2.130s] -- Added test 'xmllint' to check XML markup files
+[2.131s] -- Configuring done
+[2.133s] -- Generating done
+[2.135s] -- Build files have been written to: /home/user/cansat/build/cansat_sim
+[2.138s] Invoked command in '/home/user/cansat/build/cansat_sim' returned '0': CMAKE_PREFIX_PATH=/home/user/sim_ws/install/gazebo_pkg:/home/user/sim_ws/install/f1tenth_gym_ros:/opt/ros/humble /usr/bin/cmake /home/user/cansat -DCMAKE_INSTALL_PREFIX=/home/user/cansat/install/cansat_sim
+[2.140s] Invoking command in '/home/user/cansat/build/cansat_sim': CMAKE_PREFIX_PATH=/home/user/sim_ws/install/gazebo_pkg:/home/user/sim_ws/install/f1tenth_gym_ros:/opt/ros/humble /usr/bin/cmake --build /home/user/cansat/build/cansat_sim -- -j12 -l12
+[2.164s] Invoked command in '/home/user/cansat/build/cansat_sim' returned '0': CMAKE_PREFIX_PATH=/home/user/sim_ws/install/gazebo_pkg:/home/user/sim_ws/install/f1tenth_gym_ros:/opt/ros/humble /usr/bin/cmake --build /home/user/cansat/build/cansat_sim -- -j12 -l12
+[2.171s] Invoking command in '/home/user/cansat/build/cansat_sim': CMAKE_PREFIX_PATH=/home/user/sim_ws/install/gazebo_pkg:/home/user/sim_ws/install/f1tenth_gym_ros:/opt/ros/humble /usr/bin/cmake --install /home/user/cansat/build/cansat_sim
+[2.174s] -- Install configuration: ""
+[2.174s] -- Installing: /home/user/cansat/install/cansat_sim/share/cansat_sim/launch
+[2.174s] -- Installing: /home/user/cansat/install/cansat_sim/share/cansat_sim/launch/simulator.launch.py
+[2.175s] -- Installing: /home/user/cansat/install/cansat_sim/share/cansat_sim/launch/__pycache__
+[2.175s] -- Installing: /home/user/cansat/install/cansat_sim/share/cansat_sim/launch/__pycache__/simulator.launch.cpython-310.pyc
+[2.175s] -- Installing: /home/user/cansat/install/cansat_sim/share/cansat_sim/models
+[2.175s] [31mCMake Error at cmake_install.cmake:46 (file):
+[2.175s]   file INSTALL cannot find "/home/user/cansat/worlds": No such file or
+[2.175s]   directory.
+[2.175s] 
+[2.175s] [0m
+[2.175s] -- Installing: /home/user/cansat/install/cansat_sim/share/cansat_sim/models/cansat
+[2.176s] -- Installing: /home/user/cansat/install/cansat_sim/share/cansat_sim/models/cansat/model.config
+[2.176s] -- Installing: /home/user/cansat/install/cansat_sim/share/cansat_sim/models/cansat/model.sdf
+[2.177s] Invoked command in '/home/user/cansat/build/cansat_sim' returned '1': CMAKE_PREFIX_PATH=/home/user/sim_ws/install/gazebo_pkg:/home/user/sim_ws/install/f1tenth_gym_ros:/opt/ros/humble /usr/bin/cmake --install /home/user/cansat/build/cansat_sim

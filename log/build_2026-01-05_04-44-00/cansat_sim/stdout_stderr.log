@@ -1,0 +1,18 @@
+-- Install configuration: ""
+-- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/launch
+-- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/launch/simulator.launch.py
+-- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/launch/__pycache__
+-- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/launch/__pycache__/simulator.launch.cpython-310.pyc
+-- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/models
+-- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/models/cansat
+-- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/models/cansat/model.config
+-- Up-to-date: /home/user/cansat/install/cansat_sim/share/cansat_sim/models/cansat/model.sdf
+-- Installing: /home/user/cansat/install/cansat_sim/share/cansat_sim/worlds
+-- Installing: /home/user/cansat/install/cansat_sim/share/cansat_sim/worlds/cansat_world.sdf
+-- Installing: /home/user/cansat/install/cansat_sim/share/cansat_sim/scripts
+-- Installing: /home/user/cansat/install/cansat_sim/share/cansat_sim/scripts/controller.node.py
+[31mCMake Error at cmake_install.cmake:55 (file):
+  file INSTALL cannot find "/home/user/cansat/scripts/controller_node.py": No
+  such file or directory.
+
+[0m
