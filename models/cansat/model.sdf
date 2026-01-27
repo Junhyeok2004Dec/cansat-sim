@@ -26,6 +26,22 @@
       <collision name="body_collision">
         <geometry><cylinder><radius>0.095</radius><length>0.15</length></cylinder></geometry>
       </collision>
+      <sensor name="camera_down" type="camera">
+        <pose>0 0 -0.005 0 1.5708 0</pose>
+        <visualize>true</visualize>
+        <update_rate>30</update_rate>
+        <topic>cansat/camera/image</topic> <camera>
+          <horizontal_fov>1.047</horizontal_fov> <image>
+            <width>1280</width>
+            <height>720</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.01</near>
+            <far>100</far>
+          </clip>
+        </camera>
+      </sensor>
       <sensor name="imu_sensor" type="imu">
         <always_on>1</always_on>
         <update_rate>100</update_rate>

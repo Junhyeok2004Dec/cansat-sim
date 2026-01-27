@@ -22,4 +22,4 @@ WORKDIR '/sim_ws'
 # 3. 의존성 설치 및 빌드를 위한 초기화 (소스는 docker-compose에서 마운트)
 SHELL ["/bin/bash", "-c"]
 RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
-
+RUN echo "source install/local_setup.bash" >> ~/.bashrc

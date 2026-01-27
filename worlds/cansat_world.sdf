@@ -11,7 +11,9 @@
     <plugin filename="ignition-gazebo-user-commands-system" name="ignition::gazebo::systems::UserCommands" />
     <plugin filename="ignition-gazebo-scene-broadcaster-system" name="ignition::gazebo::systems::SceneBroadcaster" />
     <plugin filename="ignition-gazebo-imu-system" name="ignition::gazebo::systems::Imu" />
-
+    <plugin filename="libignition-gazebo-sensors-system.so" name="ignition::gazebo::systems::Sensors">
+      <render_engine>ogre</render_engine>
+    </plugin>
     <plugin filename="ignition-gazebo-apply-link-wrench-system" name="ignition::gazebo::systems::ApplyLinkWrench" />
     <light type="directional" name="sun">
       <cast_shadows>true</cast_shadows>
