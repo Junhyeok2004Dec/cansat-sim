@@ -26,14 +26,16 @@ services:
     command: >
       bash -c "source /opt/ros/humble/setup.bash &&
       colcon build --symlink-install &&
-      source install/setup.bash &&
-      ros2 launch cansat_sim simulator.launch.py"
+      source install/setup.bash;
+      tail -f /dev/null"
+      
     networks:
       - x11
     depends_on:
       - novnc
+    stdin_open: true
+    tty: true
 
-  # [화면] 웹 브라우저로 GUI를 보여주는 컨테이너
   novnc:
     image: theasp/novnc:latest
     container_name: novnc_display

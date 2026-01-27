@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y \
     python3-colcon-common-extensions \
     ros-humble-ros-gz \
     ros-humble-xacro \
+    terminator \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get -y dist-upgrade
