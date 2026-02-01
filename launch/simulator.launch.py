@@ -26,6 +26,8 @@ def generate_launch_description():
     
     
     
+    
+    
     # 3. CanSat 모델 스폰 (Spawn)
     # GZ_SIM_RESOURCE_PATH에 등록된 'cansat' 모델명을 사용합니다.
     spawn_model = Node(

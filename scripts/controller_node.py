@@ -6,9 +6,9 @@ from nav_msgs.msg import Odometry
 class ParafoilController(Node):
     def __init__(self):
         super().__init__('parafoil_controller')
-        # 1. 상태(위치, 속도) 구독D
+        
         self.sub_odom = self.create_subscription(Odometry, '/model/cansat/odometry', self.odom_callback, 10)
-        # 2. 제어력(Wrench) 발행
+        
         self.pub_wrench = self.create_publisher(Wrench, '/model/cansat/force_torque', 10)
         
         self.timer = self.create_timer(0.02, self.control_loop) # 50Hz
