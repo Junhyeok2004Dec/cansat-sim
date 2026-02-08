@@ -2,30 +2,40 @@
 <sdf version="1.7">
   <model name="cansat">
     
-    <plugin
-      filename="libignition-gazebo-odometry-publisher-system.so"
-      name="ignition::gazebo::systems::OdometryPublisher">
-      <odom_publish_frequency>50</odom_publish_frequency>
-      <topic>cansat/odom</topic>
-      <odom_frame>world</odom_frame>
-      <robot_base_frame>body</robot_base_frame>
+    <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
+      <ros>
+        <namespace>/cansat</namespace>
+        <remapping>odom:=odom</remapping>
+      </ros>
+      <body_name>body</body_name>
+      <frame_name>world</frame_name>
+      <update_rate>50.0</update_rate>
+      <xyz_offset>0 0 0</xyz_offset>
+      <rpy_offset>0 0 0</rpy_offset>
+      <gaussian_noise>0.01</gaussian_noise>
     </plugin>
 
     <link name="body">
-      <pose>0 0 1.4 0 0 0</pose> 
-      
-      <inertial>
-        <mass>0.9472</mass>
+      <pose>0 0 0 0 0 0</pose>
+
+      <inertial> 
+          <mass>0.9472</mass>
         <inertia>
-          <ixx>0.002317</ixx> <ixy>0</ixy> <ixz>0</ixz>
-          <iyy>0.002317</iyy> <iyz>0</iyz>
-          <izz>0.0001072</izz>
+            <ixx>0.05</ixx>  <ixy>0</ixy> <ixz>0</ixz>
+            <iyy>0.05</iyy>  <iyz>0</iyz>
+            <izz>0.43</izz>
         </inertia>
       </inertial>
       
+      
       <visual name="body_visual">
         <geometry><cylinder><radius>0.095</radius><length>0.15</length></cylinder></geometry>
-        <material><ambient>0 0 1 1</ambient><diffuse>0 0 1 1</diffuse></material>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Blue</name>
+          </script>
+        </material>
       </visual>
       
       <collision name="body_collision">
@@ -36,49 +46,88 @@
         <pose>0 0 -0.075 0 1.5708 0</pose> 
         <visualize>true</visualize>
         <update_rate>30</update_rate>
-        <topic>cansat/camera/image</topic> 
         <camera>
           <horizontal_fov>1.047</horizontal_fov> 
           <image><width>1280</width><height>720</height><format>R8G8B8</format></image>
           <clip><near>0.01</near><far>100</far></clip>
         </camera>
+        <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+          <ros>
+            <namespace>/cansat</namespace>
+            <remapping>image_raw:=camera/image</remapping>
+            <remapping>camera_info:=camera/camera_info</remapping>
+          </ros>
+          <frame_name>body</frame_name> </plugin>
       </sensor>
 
       <sensor name="imu_sensor" type="imu">
-        <always_on>1</always_on>
+        <always_on>true</always_on>
         <update_rate>100</update_rate>
-        <topic>cansat/imu</topic>
+        <plugin name="imu_plugin" filename="libgazebo_ros_imu_sensor.so">
+          <ros>
+            <namespace>/cansat</namespace>
+            <remapping>~/out:=imu</remapping>
+          </ros>
+          <initial_orientation_as_reference>false</initial_orientation_as_reference>
+        </plugin>
       </sensor>
     </link>
 
     <link name="parafoil">
-      <pose>0 0 1.8 0 0 0</pose> <inertial>
+      <pose>0 0 0.4 0 0 0</pose> 
+      <inertial>
         <mass>0.05</mass>
         <inertia><ixx>0.01</ixx><iyy>0.01</iyy><izz>0.01</izz></inertia>
       </inertial>
       <visual name="parafoil_visual">
         <geometry><box><size>0.6 0.3 0.01</size></box></geometry>
-        <material><ambient>1 0 0 1</ambient><diffuse>1 0 0 1</diffuse></material>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Red</name>
+          </script>
+        </material>
       </visual>
-      
-      <plugin
-        filename="ignition-gazebo-liftdrag-system"
-        name="ignition::gazebo::systems::LiftDrag">
-        <a0>0.0</a0>
-        <cla>4.0</cla>
-        <cda>0.165</cda>
-        <cp>0 0 0</cp>
-        <area>1.02</area>
-        <air_density>1.107</air_density>
-        <forward>1 0 0</forward>
-        <upward>0 0 1</upward>
-        <link_name>parafoil</link_name>
-      </plugin>
     </link>
 
-    <joint name="parafoil_joint" type="ball">
-      <parent>body</parent>
+    <joint name="parafoil_joint" type="revolute"> <parent>body</parent>
       <child>parafoil</child>
+      <pose>0 0 0 0 0 0</pose>
+      <axis>
+          <xyz>0 0 1</xyz>
+
+          <dynamics>
+            <damping>1.0</damping>   <friction>0.5</friction>
+            
+            </dynamics>
+          <limit><lower>0</lower><upper>0</upper></limit> 
+      </axis>
     </joint>
+
+    <plugin name="parafoil_lift" filename="libLiftDragPlugin.so">
+      <a0>0.0</a0>
+      <cla>0.4</cla>
+      <cda>0.165</cda>
+      <cma>0.0</cma>
+      <alpha_stall>0.33</alpha_stall> <cla_stall>-0.2</cla_stall>
+      <cda_stall>1.0</cda_stall>
+      <cma_stall>0.0</cma_stall>
+      <cp>0 0 0</cp>
+      <area>1.02</area>
+      <air_density>1.107</air_density>
+      <forward>1 0 0</forward>
+      <upward>0 0 1</upward>
+      <link_name>parafoil</link_name>
+    </plugin>
+
+    <plugin name="gazebo_ros_force" filename="libgazebo_ros_force.so">
+      <ros>
+        <namespace>/cansat</namespace>
+        <remapping>gazebo_ros_force:=cmd_force</remapping>
+      </ros>
+      <link_name>parafoil</link_name>
+      <force_frame>world</force_frame>
+    </plugin>
+
   </model>
 </sdf>
