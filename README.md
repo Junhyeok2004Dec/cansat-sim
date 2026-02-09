@@ -10,6 +10,16 @@ TODO
 # Usage
 ----
 
+Run simulator
+
+```bash
+ros2 launch cansat_sim simulator.launch.py
+```
+
+Red object detection
+```bash
+ros2 run cansat_sim controller_node.py
+```
 TODO
 
 # Image & Control
