@@ -12,7 +12,7 @@ TODO
 
 TODO
 
-# Image
+# Image & Control
 ----
 
 
