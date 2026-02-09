@@ -41,7 +41,7 @@ def generate_launch_description():
         arguments=[
             '-entity', 'cansat_model',  
             '-file', model_path,        
-            '-z', '50.0'                
+            '-z', '800.0'                
         ],
         output='screen',
     )

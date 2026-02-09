@@ -49,7 +49,7 @@
         <camera>
           <horizontal_fov>1.047</horizontal_fov> 
           <image><width>1280</width><height>720</height><format>R8G8B8</format></image>
-          <clip><near>0.01</near><far>100</far></clip>
+          <clip><near>0.01</near><far>1000</far></clip>
         </camera>
         <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
           <ros>
@@ -73,66 +73,92 @@
       </sensor>
     </link>
 
-    <link name="parafoil">
-      <pose>0 0 0.4 0 0 0</pose> 
+    <link name="parafoil_left">
+      <pose>0 0.55 0.1 0 0 0</pose> 
       <inertial>
-        <mass>0.096</mass>
-        <inertia>
-            <ixx>0.038</ixx> <iyy>0.005</iyy> <izz>0.043</izz> </inertia>
+        <mass>0.048</mass> <inertia>
+          <ixx>0.019</ixx> <iyy>0.0025</iyy> <izz>0.0215</izz>
+        </inertia>
       </inertial>
-      <visual name="parafoil_visual">
-        <geometry><box><size>0.82 2.2 0.001</size></box></geometry>
-        <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Red</name>
-          </script>
-        </material>
+      <visual name="visual">
+        <geometry><box><size>0.82 1.1 0.001</size></box></geometry>
+        <material><script><name>Gazebo/Red</name></script></material>
       </visual>
-      <collision name="parafoil_collision">
-         <geometry><box><size>0.82 2.2 0.001</size></box></geometry>
+      <collision name="collision">
+        <geometry><box><size>0.82 1.1 0.001</size></box></geometry>
       </collision>
     </link>
 
-    <joint name="parafoil_joint" type="revolute"> 
+    <joint name="joint_left" type="revolute">
       <parent>body</parent>
-      <child>parafoil</child>
-      <pose>0 0 0 0 0 0</pose>
+      <child>parafoil_left</child>
       <axis>
-          <xyz>0 1 0</xyz> <dynamics>
-            <damping>1.0</damping> 
-            <friction>0.5</friction>
-          </dynamics>
-          <limit><lower>-0.5</lower><upper>0.5</upper></limit> 
+        <xyz>0 1 0</xyz> <limit><lower>-1.0</lower><upper>1.0</upper></limit>
+        <dynamics><damping>0.5</damping></dynamics>
       </axis>
     </joint>
 
-    <plugin name="parafoil_lift" filename="libLiftDragPlugin.so">
+    <plugin name="lift_drag_left" filename="libLiftDragPlugin.so">
       <a0>0.0</a0>
-      <cla>0.4</cla> 
-      <cda>0.165</cda>
-      <cma>0.0</cma>
-      <alpha_stall>0.33</alpha_stall> 
-      <cla_stall>-0.2</cla_stall>
+      <cla>0.4</cla> <cda>0.165</cda> <cma>0.0</cma>
+      <alpha_stall>0.33</alpha_stall> <cla_stall>-0.2</cla_stall>
       <cda_stall>1.0</cda_stall>
-      <cma_stall>0.0</cma_stall>
-      <cp>0 0 0</cp>
-      
-      <area>1.8</area> 
-      
-      <air_density>1.225</air_density>
-      <forward>1 0 0</forward>
-      <upward>0 0 1</upward>
-      <link_name>parafoil</link_name>
+      <cp>0 0.55 0</cp> <area>0.9</area>  <air_density>1.225</air_density>
+      <forward>1 0 0</forward> <upward>0 0 1</upward>
+      <link_name>parafoil_left</link_name>
     </plugin>
 
-    <plugin name="gazebo_ros_force" filename="libgazebo_ros_force.so">
+    <link name="parafoil_right">
+      <pose>0 -0.55 0.1 0 0 0</pose> 
+      <inertial>
+        <mass>0.048</mass>
+        <inertia>
+          <ixx>0.019</ixx> <iyy>0.0025</iyy> <izz>0.0215</izz>
+        </inertia>
+      </inertial>
+      <visual name="visual">
+        <geometry><box><size>0.82 1.1 0.001</size></box></geometry>
+        <material><script><name>Gazebo/Green</name></script></material>
+      </visual>
+      <collision name="collision">
+        <geometry><box><size>0.82 1.1 0.001</size></box></geometry>
+      </collision>
+    </link>
+
+    <joint name="joint_right" type="revolute">
+      <parent>body</parent>
+      <child>parafoil_right</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit><lower>-1.0</lower><upper>1.0</upper></limit>
+        <dynamics><damping>0.5</damping></dynamics>
+      </axis>
+    </joint>
+
+    <plugin name="lift_drag_right" filename="libLiftDragPlugin.so">
+      <a0>0.0</a0>
+      <cla>0.4</cla> <cda>0.165</cda>
+      <cp>0 -0.55 0</cp> <area>0.9</area>
+      <forward>1 0 0</forward> <upward>0 0 1</upward>
+      <link_name>parafoil_right</link_name>
+    </plugin>
+
+    <plugin name="left_arm_force" filename="libgazebo_ros_force.so">
       <ros>
         <namespace>/cansat</namespace>
-        <remapping>gazebo_ros_force:=cmd_force</remapping>
+        <remapping>gazebo_ros_force:=left_arm_cmd</remapping>
       </ros>
-      <link_name>parafoil</link_name>
-      <force_frame>world</force_frame>
+      <link_name>parafoil_left</link_name>
+      <force_frame>link</force_frame>
+    </plugin>
+
+    <plugin name="right_arm_force" filename="libgazebo_ros_force.so">
+      <ros>
+        <namespace>/cansat</namespace>
+        <remapping>gazebo_ros_force:=right_arm_cmd</remapping>
+      </ros>
+      <link_name>parafoil_right</link_name>
+      <force_frame>link</force_frame>
     </plugin>
 
   </model>
