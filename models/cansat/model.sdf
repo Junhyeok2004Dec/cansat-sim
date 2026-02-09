@@ -76,11 +76,12 @@
     <link name="parafoil">
       <pose>0 0 0.4 0 0 0</pose> 
       <inertial>
-        <mass>0.05</mass>
-        <inertia><ixx>0.01</ixx><iyy>0.01</iyy><izz>0.01</izz></inertia>
+        <mass>0.096</mass>
+        <inertia>
+            <ixx>0.038</ixx> <iyy>0.005</iyy> <izz>0.043</izz> </inertia>
       </inertial>
       <visual name="parafoil_visual">
-        <geometry><box><size>0.6 0.3 0.01</size></box></geometry>
+        <geometry><box><size>0.82 2.2 0.001</size></box></geometry>
         <material>
           <script>
             <uri>file://media/materials/scripts/gazebo.material</uri>
@@ -88,33 +89,38 @@
           </script>
         </material>
       </visual>
+      <collision name="parafoil_collision">
+         <geometry><box><size>0.82 2.2 0.001</size></box></geometry>
+      </collision>
     </link>
 
-    <joint name="parafoil_joint" type="revolute"> <parent>body</parent>
+    <joint name="parafoil_joint" type="revolute"> 
+      <parent>body</parent>
       <child>parafoil</child>
       <pose>0 0 0 0 0 0</pose>
       <axis>
-          <xyz>0 0 1</xyz>
-
-          <dynamics>
-            <damping>1.0</damping>   <friction>0.5</friction>
-            
-            </dynamics>
-          <limit><lower>0</lower><upper>0</upper></limit> 
+          <xyz>0 1 0</xyz> <dynamics>
+            <damping>1.0</damping> 
+            <friction>0.5</friction>
+          </dynamics>
+          <limit><lower>-0.5</lower><upper>0.5</upper></limit> 
       </axis>
     </joint>
 
     <plugin name="parafoil_lift" filename="libLiftDragPlugin.so">
       <a0>0.0</a0>
-      <cla>0.4</cla>
+      <cla>0.4</cla> 
       <cda>0.165</cda>
       <cma>0.0</cma>
-      <alpha_stall>0.33</alpha_stall> <cla_stall>-0.2</cla_stall>
+      <alpha_stall>0.33</alpha_stall> 
+      <cla_stall>-0.2</cla_stall>
       <cda_stall>1.0</cda_stall>
       <cma_stall>0.0</cma_stall>
       <cp>0 0 0</cp>
-      <area>1.02</area>
-      <air_density>1.107</air_density>
+      
+      <area>1.8</area> 
+      
+      <air_density>1.225</air_density>
       <forward>1 0 0</forward>
       <upward>0 0 1</upward>
       <link_name>parafoil</link_name>
