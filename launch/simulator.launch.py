@@ -9,14 +9,11 @@ def generate_launch_description():
     pkg_path = get_package_share_directory('cansat_sim')
     pkg_gazebo_ros = get_package_share_directory('gazebo_ros')
     
-    model_path = os.path.join(pkg_path, 'models', 'cansat', 'model.sdf')
+    model_path = os.path.join(pkg_path, 'models', 'cansat', 'modelrigid.sdf')
     
-    world_file_path = "/sim_ws/src/cansat/worlds/cansat_world.sdf" 
-    
-    if os.path.exists(world_file_path):
-        print(f"[INFO] [FILE] World file found at {world_file_path}")
-    else:
-        world_file_path = os.path.join(pkg_path, 'worlds', 'cansat_world.sdf')
+    world_file_path = "/sim_ws/src/cansat/worlds/cansat.sdf" 
+    world_file_path = os.path.join(pkg_path, 'worlds', 'cansat.sdf')
+    rviz_config_path = os.path.join(pkg_path, 'rviz', 'rviz.rviz')
 
     gz_server = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
@@ -25,7 +22,9 @@ def generate_launch_description():
         launch_arguments={
             'world': world_file_path,
             'verbose': 'true',
-            'extra_gazebo_args': '--ros-args --params-file ' + os.path.join(pkg_path, 'config', 'gazebo_params.yaml') if os.path.exists(os.path.join(pkg_path, 'config', 'gazebo_params.yaml')) else '--ros-args -s libgazebo_ros_init.so -s libgazebo_ros_factory.so'
+            'extra_gazebo_args': '--ros-args --params-file ' + os.path.join(pkg_path, 'config', 'gazebo_params.yaml') if os.path.exists(os.path.join(pkg_path, 'config', 'gazebo_params.yaml')) else '--ros-args -s libgazebo_ros_init.so -s libgazebo_ros_factory.so',
+            'pause': 'true'
+            
         }.items(),
     )
 
@@ -41,13 +40,41 @@ def generate_launch_description():
         arguments=[
             '-entity', 'cansat_model',  
             '-file', model_path,        
-            '-z', '800.0'                
+            '-z', '0.0',                
+            '-x', '0.0',
+            '-y', '0.0'
         ],
         output='screen',
     )
+    
+    with open(model_path, 'r') as infp:
+        robot_desc = infp.read()
+
+    robot_state_publisher_node = Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        name='robot_state_publisher',
+        output='both',
+        parameters=[{
+            'use_sim_time': True,
+            'robot_description': robot_desc
+        }]
+    )
+        
+    rqt_image_view_node = Node(
+        package='rqt_image_view',
+        executable='rqt_image_view',
+        name='rqt_image_view',
+        output='screen',
+        parameters=[{'use_sim_time': True}]
+    )
+
+
 
     return LaunchDescription([
         gz_server,
         gz_client,
-        spawn_model
+        spawn_model,
+        robot_state_publisher_node,
+        rqt_image_view_node
     ])
