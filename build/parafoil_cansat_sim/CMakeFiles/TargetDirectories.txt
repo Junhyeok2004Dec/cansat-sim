@@ -1,9 +1,0 @@
-/home/user/cansat/build/parafoil_cansat_sim/CMakeFiles/uninstall.dir
-/home/user/cansat/build/parafoil_cansat_sim/CMakeFiles/parafoil_cansat_sim_uninstall.dir
-/home/user/cansat/build/parafoil_cansat_sim/CMakeFiles/test.dir
-/home/user/cansat/build/parafoil_cansat_sim/CMakeFiles/edit_cache.dir
-/home/user/cansat/build/parafoil_cansat_sim/CMakeFiles/rebuild_cache.dir
-/home/user/cansat/build/parafoil_cansat_sim/CMakeFiles/list_install_components.dir
-/home/user/cansat/build/parafoil_cansat_sim/CMakeFiles/install.dir
-/home/user/cansat/build/parafoil_cansat_sim/CMakeFiles/install/local.dir
-/home/user/cansat/build/parafoil_cansat_sim/CMakeFiles/install/strip.dir
