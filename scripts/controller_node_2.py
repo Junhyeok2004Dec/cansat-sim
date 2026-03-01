@@ -22,11 +22,11 @@ class CansatXYControl(Node):
         self.bridge = CvBridge()
 
         # PID Gain
-        self.pid_x = {'kp': 5.0, 'ki': 0.00, 'kd': 0.0, 'integ': 0.0, 'prev': 0.0}
-        self.pid_y = {'kp': 5.0, 'ki': 0.00, 'kd': 0.0, 'integ': 0.0, 'prev': 0.0}
+        self.pid_x = {'kp': 2.0, 'ki': 0.00, 'kd': 0.0, 'integ': 0.0, 'prev': 0.0}
+        self.pid_y = {'kp': 2.0, 'ki': 0.00, 'kd': 0.0, 'integ': 0.0, 'prev': 0.0}
         
         self.last_time = time.time()
-        self.max_force = 5.0  
+        self.max_force = 2.0  
         self.base_brake = 0.6 
         
         # --- State Machine Parameters ---
@@ -107,14 +107,19 @@ class CansatXYControl(Node):
                     force_x = self.stored_force_x
                     force_y = self.stored_force_y
                     
+                    
+                    
+                    
                     if self.current_action == "LEFT":
-                        left_val, right_val = force_x, 0.0
+                        left_val, right_val = force_x, 0.6
                     elif self.current_action == "RIGHT":
-                        left_val, right_val = 0.0, force_x
+                        left_val, right_val = 0.6, force_x
                     elif self.current_action == "BRAKE":
                         left_val, right_val = force_y, force_y
                     elif self.current_action == "GLIDE":
-                        left_val, right_val = 0.0, 0.0
+                        left_val, right_val = 0.6, 0.6
+                        
+                    self.get_logger().info(f"{self.current_action}, {left_val} , {right_val}")
                 else:
                     self.state = "WAIT"
                     self.action_start_time = curr_time 
@@ -160,7 +165,7 @@ class CansatXYControl(Node):
                                     
                         self.get_logger().info(f"[START ACTION] {self.current_action} (Wait for {self.wait_duration}s later)")
 
-            self.publish_command(-left_val, -right_val)
+            self.publish_command(left_val, right_val)
 
             # --- Debug Visualization ---
             cv2.line(cv_image, (cx, 0), (cx, h), (255, 0, 0), 1)

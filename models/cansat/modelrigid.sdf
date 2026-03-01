@@ -18,7 +18,7 @@
     <link name="body">
       <pose>0 0 0 0 0 0</pose>
       <inertial> 
-          <mass>0.9472</mass>
+          <mass>2.9472</mass>
         <inertia>
             <ixx>0.05</ixx>  <ixy>0</ixy> <ixz>0</ixz>
             <iyy>0.05</iyy>  <iyz>0</iyz>
